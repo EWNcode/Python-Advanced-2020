@@ -17,7 +17,7 @@ def where_to_start(petrol_pumps):
     current = 0
     counter = 0
 
-    while len(petrol_pumps)-1 > 1:
+    while len(petrol_pumps) > 0:
         pump = petrol_pumps.popleft().split()
         petrol_in_truck += (int(pump[0]) - int(pump[-1]))
         if petrol_in_truck < 0:

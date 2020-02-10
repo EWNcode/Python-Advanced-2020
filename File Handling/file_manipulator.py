@@ -1,14 +1,5 @@
+
 from os import remove
-
-
-def read_until_command(end_command):
-    ll = []
-    while True:
-        command = input()
-        if command == end_command:
-            break
-        ll.append(command)
-    return ll
 
 
 def create_file(file):
@@ -26,7 +17,7 @@ def replace_on_file(file_name, old, new):
     try:
         with open(file_name, 'r') as file:
             new_file = file.read().replace(old, new)
-        with open(file_name , 'w') as file:
+        with open(file_name, 'w') as file:
             file.write(new_file)
 
     except:
@@ -40,9 +31,12 @@ def file_delete(file_name):
         print("An error occurred")
 
 
-def file_manipulation(commands):
-    for command in commands:
-        command, file_name, *args = command.split('-')
+def file_manipulation():
+    while True:
+        data = input()
+        if data == 'End':
+            break
+        command, file_name, *args = data.split('-')
         if command == 'Create':
             create_file(file_name)
         elif command == 'Add':
@@ -57,6 +51,4 @@ def file_manipulation(commands):
 
 
 if __name__ == '__main__':
-    command_list = read_until_command('End')
-    file_manipulation(command_list)
-
+    file_manipulation()
